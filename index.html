@@ -71,7 +71,7 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 /* Dialog box */
 #dialog-box{
   position:fixed;left:50%;transform:translateX(-50%);
-  width:min(560px,92vw);background:#fbfbfb;
+  width:min(1100px,94vw);background:#fbfbfb;
   border:4px solid #050E08;padding:40px;
   z-index:150;opacity:0;pointer-events:none;transition:opacity 0.25s;
 }
@@ -81,8 +81,8 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
   .dialog-content{font-size:14px!important}
 }
 #dialog-box.visible{opacity:1;pointer-events:all}
-.dialog-header{font-family:'Share Tech Mono',monospace;font-size:32px;color:#050E08;margin-bottom:24px;letter-spacing:0;border-bottom:none;padding-bottom:0;text-shadow:none}
-.dialog-content{font-family:'Share Tech Mono',monospace;font-size:24px;line-height:1.4;color:#050E08}
+.dialog-header{font-family:'Share Tech Mono',monospace;font-size:24px;color:#050E08;margin-bottom:24px;letter-spacing:0;border-bottom:none;padding-bottom:0;text-shadow:none}
+.dialog-content{font-family:'Share Tech Mono',monospace;font-size:18px;line-height:1.5;color:#050E08}
 .dialog-content span{color:#555!important}
 .dialog-hint{display:none}
 @media(max-width:768px){#dialog-box{bottom:100px;padding:14px 16px}.dialog-content{font-size:12px}}
@@ -90,7 +90,7 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 /* Project popup */
 #project-popup{
   position:fixed;left:50%;transform:translateX(-50%);
-  width:min(560px,92vw);max-height:50vh;background:#fbfbfb;
+  width:min(1100px,94vw);max-height:50vh;background:#fbfbfb;
   border:4px solid #050E08;padding:40px;z-index:200;opacity:0;
   pointer-events:none;transition:opacity 0.25s;overflow-y:auto;
 }
@@ -113,10 +113,10 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 .popup-close:hover{background:#050E08}
 .popup-close:hover svg line{stroke:#fbfbfb}
 .popup-close:hover{color:#fff}
-.popup-title{font-family:'Share Tech Mono',monospace;font-size:32px;color:#050E08;margin-bottom:24px;letter-spacing:0;text-transform:uppercase}
-.popup-what-label,.popup-how-label{font-family:'Share Tech Mono',monospace;font-size:20px;color:#050E08;margin-top:0;margin-bottom:8px;letter-spacing:0}
+.popup-title{font-family:'Share Tech Mono',monospace;font-size:24px;color:#050E08;margin-bottom:24px;letter-spacing:0;text-transform:uppercase}
+.popup-what-label,.popup-how-label{font-family:'Share Tech Mono',monospace;font-size:16px;color:#050E08;margin-top:0;margin-bottom:8px;letter-spacing:0}
 .popup-how-label{margin-top:24px}
-.popup-what,.popup-how{font-family:'Share Tech Mono',monospace;font-size:24px;line-height:1.4;color:#050E08;margin-bottom:24px}
+.popup-what,.popup-how{font-family:'Share Tech Mono',monospace;font-size:18px;line-height:1.5;color:#050E08;margin-bottom:24px}
 .popup-tags{display:none}
 .popup-tag{display:none}
 .popup-see-more{display:block;margin:0 auto;font-family:'Share Tech Mono',monospace;font-size:21px;color:#050E08;background:#fbfbfb;border:4px solid #050E08;padding:8px 48px;cursor:pointer;letter-spacing:-1.5px;transition:all 0.15s;-webkit-tap-highlight-color:transparent}
@@ -173,7 +173,7 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
    ============================== */
 #browse-mode{
   position:fixed;inset:0;z-index:500;
-  background:var(--pip-bg);
+  background:#ffffff;
   overflow-y:auto;overflow-x:hidden;
   transition:opacity 0.5s;
   display:none;
@@ -185,12 +185,7 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 #browse-mode::-webkit-scrollbar-thumb{background:var(--pip-dim);border-radius:3px}
 
 /* CRT overlay for browse mode too */
-#browse-crt{
-  position:fixed;inset:0;z-index:501;pointer-events:none;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);
-  display:none;
-}
-#browse-crt.active{display:block}
+#browse-crt{display:none}
 #browse-crt::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,0.4) 100%)}
 
 .browse-inner{
@@ -313,7 +308,7 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
 
 /* Expanded modal is wider and taller, constrained to viewport */
 #project-popup.expanded{
-  width:min(1100px,94vw);
+  width:min(1300px,96vw);
   max-height:80vh;
   top:50%!important;
   left:50%!important;
@@ -328,6 +323,36 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
   transition:opacity 0.25s;
 }
 #popup-backdrop.visible{opacity:1;pointer-events:all}
+
+/* Mode switch hint popup */
+#mode-hint{
+  position:fixed;top:90px;right:40px;z-index:301;
+  width:260px;background:#fbfbfb;border:3px solid #050E08;
+  padding:16px 20px;opacity:0;pointer-events:none;
+  transition:opacity 0.4s;font-family:'Share Tech Mono',monospace;
+}
+#mode-hint.visible{opacity:1;pointer-events:all}
+#mode-hint-text{font-size:14px;line-height:1.6;color:#050E08;margin-bottom:12px}
+#mode-hint-close{
+  display:block;margin:0 auto;font-family:'Share Tech Mono',monospace;
+  font-size:12px;color:#050E08;background:#fbfbfb;border:2px solid #050E08;
+  padding:4px 16px;cursor:pointer;transition:all 0.15s;
+}
+#mode-hint-close:hover{background:#050E08;color:#fbfbfb}
+#mode-hint-arrow{
+  position:absolute;top:-10px;right:24px;
+  width:0;height:0;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:10px solid #050E08;
+}
+#mode-hint-arrow-inner{
+  position:absolute;top:-7px;right:27px;
+  width:0;height:0;
+  border-left:7px solid transparent;
+  border-right:7px solid transparent;
+  border-bottom:7px solid #fbfbfb;
+}
 </style>
 </head>
 <body>
@@ -368,7 +393,7 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
     <div class="dialog-hint">[E] or tap to close</div>
   </div>
 
-  <canvas id="player-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:500"></canvas>
+  <canvas id="player-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:95"></canvas>
   <div id="popup-backdrop" onclick="collapseModal()"></div>
   <div id="project-popup">
     <button class="popup-close" onclick="closePopup()"><svg viewBox="0 0 20 20"><line x1="2" y1="2" x2="18" y2="18"/><line x1="18" y1="2" x2="2" y2="18"/></svg></button>
@@ -427,45 +452,45 @@ canvas{position:absolute;top:0;left:0;width:100%;height:100%}
   </svg>
 </div>
 
+<div id="mode-hint">
+  <div id="mode-hint-arrow"></div>
+  <div id="mode-hint-arrow-inner"></div>
+  <div id="mode-hint-text">Psst... playing for too long can hurt your eyes. Do you want to turn off game mode?</div>
+  <button id="mode-hint-close" onclick="closeModeHint()">Got it</button>
+</div>
+
 <!-- ======== BROWSE MODE ======== -->
 <div id="browse-mode">
   <div id="browse-crt"></div>
-  <div class="browse-inner">
-    <div class="browse-header">
-      <div class="browse-name">Ásbjörn Erlingsson</div>
-      <div class="browse-role">Digital Product Designer — The City of Reykjavík</div>
-      <button class="browse-toggle-back" onclick="toggleMode()">[ GAME MODE ]</button>
+  <div class="browse-inner" style="max-width:1100px;margin:0 auto;padding:80px 40px 100px;font-family:Helvetica,Arial,sans-serif">
+    
+    <!-- Header -->
+    <div style="margin-bottom:60px">
+      <h1 style="font-size:48px;font-weight:bold;color:#020406;margin-bottom:8px;letter-spacing:-0.5px">Ásbjörn Erlingsson</h1>
+      <p style="font-size:24px;color:#020406;line-height:1.4">Digital Product Designer</p>
+      <p style="font-size:24px;color:#020406;line-height:1.4">The City of Reykjavík</p>
     </div>
 
-    <div class="browse-section">
-      <div class="browse-section-title">> About</div>
-      <div class="browse-about">
-        I'm a digital product designer at the Municipality of Reykjavík. I dabble in illustration, animation and anything digital. I love a challenge; get me a cup of coffee, some new software, and I'll deliver!
-        <div class="browse-contact-line">✉ asbjornerlingsson@gmail.com</div>
-        <div class="browse-contact-line">☎ 6616443</div>
+    <!-- Navigation -->
+    <div style="display:flex;gap:0;margin-bottom:60px">
+      <div style="padding:16px 32px;font-size:20px;font-weight:bold;color:#020406;border-bottom:3px solid #020406;cursor:pointer">WORK</div>
+      <div style="padding:16px 32px;font-size:20px;font-weight:bold;color:#3d3d3d;cursor:pointer" onclick="document.getElementById('browse-about-section').scrollIntoView({behavior:'smooth'})">ABOUT ME</div>
+    </div>
+
+    <!-- Project Grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px 85px;margin-bottom:80px" id="browse-project-grid">
+    </div>
+
+    <!-- About Section -->
+    <div id="browse-about-section" style="margin-top:80px;display:flex;gap:80px;align-items:center">
+      <div style="flex:1">
+        <h2 style="font-size:32px;font-weight:bold;color:#020406;margin-bottom:16px">Hi, my name is Ásbjörn!</h2>
+        <p style="font-size:24px;color:#020406;line-height:1.6;margin-bottom:24px">I'm a digital product designer at the Municipality of Reykjavík. I dabble in illustration, animation and anything digital. I love a challenge; get me a cup of coffee, some new software, and I'll deliver!</p>
+        <p style="font-size:16px;color:#7f7f7f">✉ asbjornerlingsson@gmail.com</p>
+        <p style="font-size:16px;color:#7f7f7f">☎ 6616443</p>
       </div>
     </div>
-
-    <div class="browse-section">
-      <div class="browse-section-title">> Work</div>
-      <div id="browse-projects"></div>
-    </div>
-
-    <div class="browse-section">
-      <div class="browse-section-title">> Contact</div>
-      <div class="browse-about">
-        Ásbjörn Erlingsson<br>
-        Digital Product Designer — The City of Reykjavík
-        <div class="browse-contact-line">✉ asbjornerlingsson@gmail.com</div>
-        <div class="browse-contact-line">☎ 6616443</div>
-      </div>
-    </div>
-
-    <div class="browse-footer">
-      <div class="browse-footer-text">— END OF TRANSMISSION —</div>
-    </div>
-  </div>
-</div>
+  </div></div>
 
 <!-- INTRO -->
 <div id="intro-overlay">
@@ -510,7 +535,7 @@ const P_FRAME_W=504,P_FRAME_H=720,P_FRAMES=4;
 
 // Couch image
 const couchImg=new Image();
-const COUCH_X=4800; // position after last sign (CONTACT at 7700)
+const COUCH_X=5500; // position after last sign (CONTACT at 7700)
 const sittingImg=new Image();
 sittingImg.src='data:image/png;base64,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';
 couchImg.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAABsCAYAAAC4oQ2VAAADu0lEQVR4nO3dPXLUSBgGYHlrmSIiIoILcAAiDrIhIVeAjCKDKxAScg6KiAOQEUFEREQNgTcSy9oaWxqpv+6v9Typp+QWJd56+0fjYQAAAAAAAAAAANa6qD0A/u/OvbuXtcfAvv368bNYLvxV6sIAVwkcIMzftQfAaccHr2oPgZ04fHsZ8ns0HCCMwAHCmFKtZFeJ3mz9TP+566XhAGE0nKQ+Hb/WHgLJPD48rD0EgbOlNbtKUbsEMFeJ59mUCggjcIAwplQbm7O2UmIu3cL8fInx3ynLuLONdxjKrPOtfb41HCCMhlPIVMrbWaIX5z7fGg4QRuAAYQQOEEbgAGEEDhBG4ABhBA4QppvAuXz05sXlozcvao8DOK2bg38Xn5+/rj0G4GapGs5Ui9FsII9UDWeqxcxpNmMgRbYgrzHQs3Of7xSBMycwbvqM6Ra0IUXgzAmMqc/UaDaZvr4Allr7fKcInNFUgGg2kEeqwMm0hgNclyJwrOFAH1IETqY1HOC0FIEzWhogggbakipwzg2QPTSdrOd+so0723hbkypwztVz0EAmqV5tAHJrsuHcuXf3suT1f/34eVHy+sC0JgOH2znRTEZNB87H+882vd6T7283vR6wTNOBIyCgL00Hzt4dvr2sPQTYVJOBMy7qjovHxwevVl1v/I9rsRjqajJwSrlt90sgQVnO4QBhdtVwhmG6xZQ+97PU8Z93tYewyuH905M/y35vw9D3/d10b1vQcIAwu2s4lLd2kb91vd9fSRoORX06fu36Deve729rAgcIY0rVog9fao+gnJ7vbRj6v7+VNBwgzO4aTmtb4LAnGg4QZlcNx6sLUJeGA4QROEAYgQOESbGG44uooA8aDhCm6YZjVwn68jtwHIg7TfDBNkypgDDXplS+6+M/FqthWxoOEEbgAGGuTalMI4BSNBwgzO+Gc/WvXU65uj285LO1zB2jYwFQnoYDhDl50vjP7fHb1nWWfLaWuWPMcC+ZPD48rD2Eonq/v601/WrDXgk6emVKBYTRcDakmdCTEs+zhgOEEThAGFOqlW47bzSe7/l4/1nMgCDIk+9vh2FYduZOwwHCCBwgjMABwggcIIzAAcLYpQoyrujDnmk4QBgNp7BTZxTmfP9OK98pRP+inkcNBwij4VQ29Wd5vARKLaWfRw0HCCNwgDACBwhzcg1nybwtw5rD3DFmuBfISsMBwlxrOEv22jOcE5k7xgz3AtlpOEAYgQOEEThAGIEDhBE4QBg7M5V4W5yWeFscAOBc/wLfUjF7hs/wwQAAAABJRU5ErkJggg==';
@@ -612,41 +637,95 @@ function drawCharFrame(ctx,frame,px,py,scale,flip){
 // ZONES
 // ============================
 const ZONES=[
-  {x:500,label:'ABOUT',type:'dialog',tab:'about',
+  {x:1000,label:'ABOUT',type:'dialog',tab:'about',
     header:'ABOUT — Ásbjörn Erlingsson',
     content:`I'm a digital product designer at the Municipality of Reykjavík. I dabble in illustration, animation and anything digital. I love a challenge; get me a cup of coffee, some new software, and I'll deliver!<br><br><span>✉ asbjornerlingsson@gmail.com</span><br><span>☎ 6616443</span>`,
     xp:50},
-  {x:1000,label:'VEITA',type:'project',tab:'work',
+  {x:1500,label:'VEITA',type:'project',tab:'work',
     title:'Veita',
     what:'The merging of financial aid application systems that Reykjavík and SÍS (Icelandic Association of Local Authorities) use.',
     how:'Through user research the current workflows of the separate financial aid systems was analysed. In order to create a usable and helpful product for both Reykjavík and SÍS, an immensely complicated workflow needed to be simplified and merged with one that was considerably simpler, but mainly suffered from some user interface troubles.',
-    tags:['UX Research','UI Design','Figma','Workflows'],xp:100},
-  {x:1550,label:'MENIGA',type:'project',tab:'work',
+    tags:['UX Research','UI Design','Figma','Workflows'],/* =====================================================
+       IMAGE GALLERY FOR VEITA
+       Add your image URLs here. They will appear in the
+       expanded popup's gallery area with ◄ ► navigation.
+       Example: images:['img/veita-1.jpg', 'img/veita-2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:2050,label:'MENIGA',type:'project',tab:'work',
     title:'Meniga Brand Revamp',
     what:'Meniga, an Icelandic fintech company, needed to update their illustration library after a brand revitalization.',
     how:'These were the first illustrations using their new design system. A visual style needed to be developed that fit their design system language.',
-    tags:['Illustration','Branding','Figma','Design System'],xp:100},
-  {x:2100,label:'BILINGUALISM',type:'project',tab:'work',
+    tags:['Illustration','Branding','Figma','Design System'],/* =====================================================
+       IMAGE GALLERY FOR MENIGA
+       Add your image URLs here. They will appear in the
+       expanded popup's gallery area with ◄ ► navigation.
+       Example: images:['img/veita-1.jpg', 'img/veita-2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:2600,label:'BILINGUALISM',type:'project',tab:'work',
     title:'Bilingualism',
     what:'A project focusing on how to give bilingual children in Reykjavík the support they need in order to prevent them from lagging behind their peers.',
     how:'Extensive analysis through interviews, workshops, and testing with experts, teachers, and parents of bilingual children. Results include the establishment of in-school youth mentoring programs and the design of informational websites containing helpful information for bilingual families.',
-    tags:['UX Research','Service Design','Workshops','Web Design'],xp:100},
-  {x:2650,label:'DIGITAL PRODUCTS',type:'project',tab:'work',
+    tags:['UX Research','Service Design','Workshops','Web Design'],/* =====================================================
+       IMAGE GALLERY FOR BILINGUALISM
+       Add your image URLs here. They will appear in the
+       expanded popup's gallery area with ◄ ► navigation.
+       Example: images:['img/veita-1.jpg', 'img/veita-2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:3150,label:'DIGITAL PRODUCTS',type:'project',tab:'work',
     title:'Digital Products',
     what:"Be it building permit information solutions or in-house asset management systems, there's a broad range of digital products you get to work on for the Municipality of Reykjavík.",
     how:'POC prototypes, cross-disciplinary teamwork, an infinite amount of back-and-forth with stakeholders and an obscene amount of coffee. A design system that ensures consistent design and development and evolves along with the products and the team.',
-    tags:['Product Design','Design Systems','Prototyping','Figma'],xp:100},
-  {x:3200,label:'ILLUSTRATIONS',type:'project',tab:'work',
+    tags:['Product Design','Design Systems','Prototyping','Figma'],/* =====================================================
+       IMAGE GALLERY FOR DIGITAL PRODUCTS
+       Add your image URLs here. They will appear in the
+       expanded popup's gallery area with ◄ ► navigation.
+       Example: images:['img/veita-1.jpg', 'img/veita-2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:3700,label:'ILLUSTRATIONS',type:'project',tab:'work',
     title:'Illustrations',
     what:"Illustrations for all kinds of stuff: childrens' books, youth drug prevention campaigns, personal sale, for fun!",
     how:'Adobe Photoshop, Adobe Illustrator, Procreate.',
-    tags:['Photoshop','Illustrator','Procreate','Illustration'],xp:100},
-  {x:3750,label:'OTHER WORKS',type:'project',tab:'work',
+    tags:['Photoshop','Illustrator','Procreate','Illustration'],/* =====================================================
+       IMAGE GALLERY FOR ILLUSTRATIONS
+       Add your image URLs here. They will appear in the
+       expanded popup's gallery area with ◄ ► navigation.
+       Example: images:['img/veita-1.jpg', 'img/veita-2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:4250,label:'OTHER WORKS',type:'project',tab:'work',
     title:'Other Works',
     what:"A 2D sidescroller where you jump on sexists' heads instead of Goombas'. A phone app that makes sure that your phone is restless and miserable in any and all positions. A first-person video game where you play either as an arthritic old person or fit young person.",
     how:'Unity, Pure Data, Blender, Photoshop, and pure stubbornness.',
-    tags:['Unity','Game Design','Blender','Pure Data'],xp:100},
-  {x:4100,label:'CONTACT',type:'dialog',tab:'contact',
+    tags:['Unity','Game Design','Blender','Pure Data'],/* =====================================================
+       IMAGE GALLERY FOR OTHER WORKS
+       Add your image URLs here. They will appear in the
+       expanded popup's gallery area with ◄ ► navigation.
+       Example: images:['img/veita-1.jpg', 'img/veita-2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:4450,label:'ODD JOBS',type:'project',tab:'work',
+    title:'Odd Jobs',
+    what:'Here and there I get to break up the workday with smaller projects.',
+    how:'Usually these smaller projects require working in graphics software such as Adobe Photoshop, Illustrator, Procreate, and Figma. Some larger projects involve Adobe After Effects. Luckily, not too many of them involve Powerpoint.',
+    tags:['Photoshop','Illustrator','After Effects','Figma'],
+    /* =====================================================
+       IMAGE GALLERY — Add your image paths here!
+       Each URL will be shown in the expanded popup gallery.
+       Example: images:['/path/to/image1.jpg', '/path/to/image2.jpg']
+       ===================================================== */
+    images:[],
+    xp:100},
+  {x:4750,label:'CONTACT',type:'dialog',tab:'contact',
     header:'CONTACT — Get in Touch',
     content:`Ásbjörn Erlingsson<br>Digital Product Designer<br>The City of Reykjavík<br><br><span>✉ asbjornerlingsson@gmail.com</span><br><span>☎ 6616443</span><br><br>Thanks for exploring. Quest complete.`,
     xp:50}
@@ -654,17 +733,16 @@ const ZONES=[
 
 // Populate browse mode projects
 function populateBrowse(){
-  const container=document.getElementById('browse-projects');
-  ZONES.filter(z=>z.type==='project').forEach(z=>{
-    container.innerHTML+=`
-      <div class="browse-project">
-        <div class="browse-project-title">${z.title}</div>
-        <div class="browse-project-label">> What?</div>
-        <div class="browse-project-text">${z.what}</div>
-        <div class="browse-project-label">> How?</div>
-        <div class="browse-project-text">${z.how}</div>
-        <div class="browse-project-tags">${z.tags.map(t=>`<span class="browse-project-tag">${t}</span>`).join('')}</div>
-      </div>`;
+  var grid=document.getElementById('browse-project-grid');
+  if(!grid)return;
+  grid.innerHTML='';
+  ZONES.filter(function(z){return z.type==='project'}).forEach(function(z){
+    var card=document.createElement('div');
+    card.style.cssText='background:#f8f8f8;border-radius:16px;height:359px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s;overflow:hidden';
+    card.innerHTML='<div style="font-family:Share Tech Mono,monospace;font-size:18px;color:#888;text-align:center">'+z.title+'</div>';
+    card.onmouseenter=function(){this.style.transform='scale(1.02)'};
+    card.onmouseleave=function(){this.style.transform='scale(1)'};
+    grid.appendChild(card);
   });
 }
 
@@ -672,9 +750,15 @@ function populateBrowse(){
 // MODE TOGGLE
 // ============================
 let currentMode='game';
+function closeModeHint(){
+  document.getElementById('mode-hint').classList.remove('visible');
+  modeHintShown=true;
+}
+
 function toggleMode(){
   if(currentMode==='game'){
     currentMode='browse';
+    closeModeHint();
     document.getElementById('browse-mode').classList.add('active');
     document.getElementById('browse-crt').classList.add('active');
     document.getElementById('game-mode').classList.add('hidden');
@@ -711,7 +795,8 @@ function toggleMode(){
 // ============================
 // GAME STATE
 // ============================
-const WORLD_WIDTH=5200,GROUND_Y_RATIO=0.74,WALK_SPEED=3.5;
+const WORLD_WIDTH=5900,GROUND_Y_RATIO=0.74,WALK_SPEED=3.5;
+let modeHintShown=false,modeHintTimer=0;
 let gameStarted=false,canvas,ctx,playerCanvas,playerCtx,cameraX=0;
 let player={x:200,y:0,vx:0,vy:0,facing:1,walking:false,animFrame:0,animTimer:0,onGround:true,jumpY:0,sitting:false,sittingTimer:0};
 let keys={},touchLeft=false,touchRight=false;
@@ -730,6 +815,9 @@ function init(){
   window.addEventListener('mousedown',onMouseDown);
   window.addEventListener('keyup',onKeyUp);
   window.addEventListener('blur',function(){keys={};touchLeft=false;touchRight=false});
+  document.addEventListener('visibilitychange',function(){if(document.hidden){keys={};touchLeft=false;touchRight=false}});
+  // Periodically check if keys are actually held (failsafe)
+  setInterval(function(){if(!document.hasFocus()){keys={};touchLeft=false;touchRight=false}},500);
   canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();lastMouseX=e.clientX-r.left;lastMouseY=e.clientY-r.top});
   setupTouch();
   requestAnimationFrame(gameLoop);
@@ -884,6 +972,14 @@ function setupTouch(){
   // Desktop click on any visible sign or couch
   canvas.addEventListener('click',e=>{
     if(!gameStarted||currentMode==='browse')return;
+  // Show mode hint after 10 seconds
+  if(!modeHintShown && !player.sitting){
+    modeHintTimer+=0.016;
+    if(modeHintTimer>10){
+      document.getElementById('mode-hint').classList.add('visible');
+      modeHintShown=true;
+    }
+  }
     // Check couch click
     const rect=canvas.getBoundingClientRect();
     const scaleX=canvas.width/rect.width;
@@ -953,7 +1049,7 @@ function interact(){
 function getNearestZone(){for(const z of ZONES)if(Math.abs(player.x-z.x)<110)return z;return null}
 function showDialog(z){activeModalZone=z;const b=document.getElementById('dialog-box');b.querySelector('.dialog-header').textContent=z.header;b.querySelector('.dialog-content').innerHTML=z.content;b.classList.add('visible');dialogOpen=true;positionModal(b,z)}
 function hideDialog(){document.getElementById('dialog-box').classList.remove('visible');dialogOpen=false;activeModalZone=null}
-function showProject(z){activeModalZone=z;const p=document.getElementById('project-popup');
+function showProject(z){activeModalZone=z;activeProjectImages=z.images||[];const p=document.getElementById('project-popup');
   // Collapsed state content
   p.querySelector('#popup-collapsed .popup-title').textContent=z.title;
   p.querySelector('#popup-collapsed .popup-what-label').textContent='WHAT?';
@@ -970,12 +1066,23 @@ function showProject(z){activeModalZone=z;const p=document.getElementById('proje
   p.classList.remove('expanded');
   p.classList.add('visible');popupOpen=true;positionModal(p,z)}
 let currentImageIdx=0;
-function prevImage(){if(currentImageIdx>0)currentImageIdx--;updateImageDisplay()}
-function nextImage(){currentImageIdx++;updateImageDisplay()}
+let activeProjectImages=[];
+function prevImage(){if(currentImageIdx>0){currentImageIdx--;updateImageDisplay()}}
+function nextImage(){if(currentImageIdx<activeProjectImages.length-1){currentImageIdx++;updateImageDisplay()}}
 function updateImageDisplay(){
-  // Placeholder for image browsing - will display images when added to zone data
-  const area=document.getElementById('popup-image-area');
-  if(area)area.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#999;font-family:Share Tech Mono,monospace;font-size:14px">Image '+(currentImageIdx+1)+'</div>';
+  var area=document.getElementById('popup-image-area');
+  if(!area)return;
+  if(activeProjectImages.length===0){
+    // No images yet — show placeholder with instructions
+    area.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#aaa;font-family:Share Tech Mono,monospace;font-size:13px;padding:20px;text-align:center">Images coming soon</div>';
+    return;
+  }
+  // Clamp index
+  if(currentImageIdx>=activeProjectImages.length)currentImageIdx=activeProjectImages.length-1;
+  if(currentImageIdx<0)currentImageIdx=0;
+  // Show current image
+  var imgUrl=activeProjectImages[currentImageIdx];
+  area.innerHTML='<img src="'+imgUrl+'" style="width:100%;height:100%;object-fit:contain;display:block" alt="Project image '+(currentImageIdx+1)+'">';
 }
 
 function expandModal(){
@@ -984,6 +1091,9 @@ function expandModal(){
   p.querySelector('#popup-expanded').style.display='';
   p.classList.add('expanded');
   document.getElementById('popup-backdrop').classList.add('visible');
+  // Reset image gallery
+  currentImageIdx=0;
+  updateImageDisplay();
 }
 
 function collapseModal(){
@@ -1007,6 +1117,14 @@ function updateTabs(zone){
 // ============================
 function update(){
   if(!gameStarted||currentMode==='browse')return;
+  // Show mode hint after 10 seconds
+  if(!modeHintShown && !player.sitting){
+    modeHintTimer+=0.016;
+    if(modeHintTimer>10){
+      document.getElementById('mode-hint').classList.add('visible');
+      modeHintShown=true;
+    }
+  }
   time+=0.016;
 
   // If sitting, handle sitting animation
@@ -1027,7 +1145,7 @@ function update(){
   const spd=(keys['Shift'])?WALK_SPEED*1.5:WALK_SPEED;
   if(keys['a']||keys['A']||keys['ArrowLeft']||touchLeft){player.vx=-spd;player.facing=-1;moving=true}
   else if(keys['d']||keys['D']||keys['ArrowRight']||touchRight){player.vx=spd;player.facing=1;moving=true}
-  else{player.vx*=0.8;if(Math.abs(player.vx)<0.1)player.vx=0}
+  else{player.vx*=0.7;if(Math.abs(player.vx)<0.3)player.vx=0}
 
   player.walking=moving;
   player.x+=player.vx;
