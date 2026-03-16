@@ -1390,8 +1390,7 @@ function render(){
     if(player.sitting){
       // Draw sitting character (same position, no shift)
       if(sittingImg.complete && sittingImg.naturalWidth>0){
-        ctx.drawImage(sittingImg, ex, ey, ew, eh);
-      }
+        ctx.drawImage(sittingImg, ex, ey + 11, ew, eh);      }
       // Draw speech bubble above and to the right of character
       if(showSpeechBubble && bubbleImg.complete && bubbleImg.naturalWidth>0){
         var bScale=endScale*0.7;
